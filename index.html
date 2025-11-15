@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>100% Morados por el Cambio | Plancha Presidencial</title>
+  <meta name="description" content="Plancha presidencial interna del Partido Morado. Renovación, transparencia y participación."/>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Montserrat (oficial del partido) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
+    <style>
+    :root {
+        --morado: #4B0082;
+        --morado-claro: #8E67B8;
+        --blanco: #FFFFFF;
+        --gris-claro: #F5F5F5;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--gris-claro);
+        color: #333;
+    }
+
+    .navbar { 
+      background-color: var(--morado); 
+      padding: 1.25rem 0;           /* Aumenta la altura de la barra */
+      position: sticky;            /* Fija la barra al hacer scroll */
+      top: 0;                      /* Se pega al tope de la ventana */
+      z-index: 1030;               /* Asegura que esté por encima del contenido */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Opcional: sombra sutil */
+    }
+
+    .navbar-brand {
+      padding: 0;
+      margin: 0 auto;
+      gap: 8px;
+    }
+
+    .navbar-brand img {
+      height: 60px;  /* Mismo que en HTML, ajustable */
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .navbar-nav .nav-link {
+        color: white !important;     /* Fuerza el blanco en logo y enlaces */
+        font-weight: 600;            /* Opcional: negrita para mejor presencia */
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #f0f0f0 !important;   /* Efecto hover más claro */
+    }
+
+    .hero {
+        background: linear-gradient(rgba(106,27,154,0.8), rgba(106,27,154,0.9)), 
+                    url('hero-bg.jpg') center/cover no-repeat;
+        color: white;
+        padding: 100px 20px;
+        text-align: center;
+    }
+
+    .btn-morado {
+        background-color: var(--morado);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: background-color 0.3s;
+    }
+    .btn-morado:hover { 
+        background-color: var(--morado-claro); 
+    }
+
+    /* CARD CANDIDATO */
+    .card-candidato {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        background: white;
+        text-align: center;
+    }
+    .card-candidato:hover { 
+        transform: translateY(-10px); 
+    }
+
+    /* CÍRCULO 20% MÁS GRANDE – TAMAÑO FIJO */
+    .candidate-photo {
+        width: 144px;           /* 120px × 1.2 = 144px */
+        height: 144px;
+        margin: 20px auto 15px;
+        overflow: hidden;
+        border: 6px solid var(--morado);
+        border-radius: 50%;
+        box-shadow: 0 6px 16px rgba(106, 27, 154, 0.25);
+        background-color: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .candidate-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+    }
+
+    .candidate-photo:hover img {
+        transform: scale(1.08);
+    }
+
+    /* RESPONSIVE: 20% MÁS GRANDE EN TODOS LOS DISPOSITIVOS */
+    @media (max-width: 992px) {
+        .candidate-photo {
+        width: 132px;         /* 110px × 1.2 */
+        height: 132px;
+        border-width: 5px;
+        }
+    }
+
+    .bg-morado { background-color: var(--morado); }
+    .text-morado { color: var(--morado); }
+    .border-morado { border-color: var(--morado) !important; }
+
+    @media (max-width: 768px) {
+        .candidate-photo {
+        width: 120px;         /* 100px × 1.2 */
+        height: 120px;
+        border-width: 5px;
+        margin: 18px auto 12px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .candidate-photo {
+        width: 108px;         /* 90px × 1.2 */
+        height: 108px;
+        border-width: 4px;
+        margin: 15px auto 10px;
+        }
+    }
+
+    /* En móviles: reducimos el logo 20% menos que en desktop (48px) */
+    @media (max-width: 768px) {
+        .navbar-brand img {
+            height: 48px; /* 60px × 0.8 */
+        }
+        .navbar-brand span {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* PROPUESTA */
+    .propuesta {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* FOOTER */
+    footer {
+        background-color: var(--morado);
+        color: white;
+        padding: 30px 0;
+        text-align: center;
+    }
+
+    /* BOTÓN WHATSAPP FIJO */
+    .whatsapp-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25D366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 1000;
+        text-decoration: none;
+        transition: transform 0.2s;
+    }
+    .whatsapp-btn:hover { 
+        transform: scale(1.1); 
+    }
+    </style>
+
+</head>
+<body>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/51906263016?text=¡Quiero%20unirme%20a%20100%%20Morados%20por%20el%20Cambio!" 
+     class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container position-relative">
+      <!-- Logo + Texto centrados -->
+      <a class="navbar-brand d-flex align-items-center justify-content-center mx-auto" href="index.html">
+        <img src="images/logotipo_pm.png" alt="Logo" class="me-2" style="height: 60px;">
+        <span class="fw-bold">100% Morados</span>
+      </a>
+
+      <!-- Botón hamburguesa (móvil) -->
+      <button class="navbar-toggler position-absolute end-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menú a la derecha -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#propuestas">Propuestas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero: 10% más alto, fondo morado semitransparente SOLO en el texto -->
+  <section class="hero" style="background: url('images/quiroz_portada.jpeg') center/cover no-repeat; padding: 96.8px 20px; color: white;">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Texto a la izquierda con fondo morado semitransparente -->
+        <div class="col-lg-6">
+          <div style="background: rgba(75, 0, 130, 0.6); padding: 22px 28px; border-radius: 14px; display: inline-block; max-width: 92%;">
+            <h1 class="display-4 fw-bold mb-2">100% Morados por el Cambio</h1>
+            <p class="lead mb-0">Soy Andrés Quiroz y lidero la Plancha presidencial interna • Renovación con principios republicanos</p>
+          </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section id="equipo" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5 fw-bold" style="color: var(--morado);">Nuestra Plancha</h2>
+      <div class="row g-4">
+        <!-- Candidato 1 -->
+        <!-- Candidato: Andrés Quiroz (Presidente) -->
+        <div class="col-md-4">
+            <div class="card-candidato h-100">
+                <div class="candidate-photo mx-auto">
+                    <img src="images/Andres_Quiroz.png" 
+                        class="rounded-circle img-fluid" 
+                        alt="Rolando Calderón">
+                </div>
+                
+                <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold">Andrés Quiroz</h5>
+                <p class="text-muted">Precandidato a Presidente</p>
+                <p class="small">Ingeniero UNI. 35 años en minería y exploración en Perú y Latam. Asesor PwC y ProInversión. De origen humilde, conoce el Perú real. Cero denuncias. Líder de morados genuinos por un Centro Republicano auténtico.</p>
+                <button type="button" class="btn btn-sm btn-morado mt-2" data-bs-toggle="modal" data-bs-target="#quirozModal">
+                      Ver más
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Candidato 2 y 3 (repetir estructura) -->
+        <div class="col-md-4">
+            <div class="card-candidato h-100">
+                
+                <div class="candidate-photo mx-auto">
+                    <img src="images/Rolando_Calderon.png" 
+                        class="rounded-circle img-fluid" 
+                        alt="Rolando Calderón">
+                </div>
+
+                <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold">Rolando Calderón</h5>
+                <p class="text-muted">Precandidato a Vicepresidente</p>
+                <p class="small">
+                    Abogado PUCP. 33 años en derecho civil. Trilingüe (ES/FR/EN). 
+                    Expresidente de dos Comisiones de Ética del CAL. Padre de militante morado. 
+                    Sin antecedentes.
+                    <br><br>
+                    <strong>Compromiso:</strong> Transparencia total y renovación orgánica del Partido Morado.
+                </p>
+                    <button type="button" class="btn btn-sm btn-morado mt-2" data-bs-toggle="modal" data-bs-target="#calderonModal">
+                      Ver más
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- ... -->
+
+        <!-- Candidato 3: Olga Tejada -->
+        <div class="col-md-4">
+          <div class="card-candidato h-100">
+            <div class="candidate-photo mx-auto">
+              <img src="images/Olga_Tejada.png" 
+                  class="rounded-circle img-fluid" 
+                  alt="Olga Tejada">
+            </div>
+            
+            <div class="card-body text-center p-4">
+              <h5 class="card-title fw-bold">Olga Tejada</h5>
+              <p class="text-muted">Precandidata a Secretaria General</p>
+              <p class="small">
+                Empresaria gráfica con <strong>20+ años</strong> liderando una empresa de impresión. 
+                Experta en gestión comercial, logística, producción y fidelización de clientes. 
+                Fundadora y Gerente General. Enfoque en eficiencia, equipos de alto rendimiento y crecimiento sostenible.
+              </p>
+              <button type="button" class="btn btn-sm btn-morado mt-2" data-bs-toggle="modal" data-bs-target="#tejadaModal">
+                Ver más
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Propuestas -->
+  <section id="propuestas" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="text-center mb-5 fw-bold" style="color: var(--morado);">Nuestras Propuestas</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="propuesta">
+            <h5>1. Reforma Orgánica del Partido</h5>
+            <p>Delegados electos por voto universal, eliminación de cuotas, transparencia total en finanzas.</p>
+          </div>
+        </div>
+        <!-- Repetir 4 más -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold" style="color: var(--morado);">Únete al Cambio</h2>
+      <p class="lead">Envíanos un mensaje por WhatsApp</p>
+      <a href="https://wa.me/51983981484?text=¡Apoyo%20a%20100%%20Morados!" 
+         class="btn btn-morado btn-lg" target="_blank">
+        <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+      </a>
+      <div class="mt-4">
+        <a href="https://instagram.com/tuusuario" class="mx-2"><i class="fab fa-instagram fa-2x" style="color: var(--morado);"></i></a>
+        <a href="https://x.com/tuusuario" class="mx-2"><i class="fab fa-twitter fa-2x" style="color: var(--morado);"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Plancha 100% Morados por el Cambio | Elecciones Internas Partido Morado</p>
+      <p>Desarrollado con <3 para la renovación republicana</p>
+    </div>
+  </footer>
+
+  <!-- Modal Creativo: Manuel Andrés Quiroz Díaz -->
+  <div class="modal fade" id="quirozModal" tabindex="-1" aria-labelledby="quirozModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: 18px; overflow: hidden;">
+        
+        <!-- Header con degradado morado -->
+        <div class="modal-header text-white" style="background: linear-gradient(135deg, #4B0082, #6A1B9A); padding: 1.8rem 2rem;">
+          <h4 class="modal-title fw-bold mb-0" id="quirozModalLabel">
+            MANUEL ANDRÉS QUIROZ DÍAZ
+          </h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-4 p-lg-5" style="background: #f8f9fa;">
+
+          <!-- Subtítulo -->
+          <div class="text-center mb-4">
+            <span class="badge bg-morado text-white px-4 py-2 fw-bold" style="font-size: 0.9rem; letter-spacing: 1px;">
+              Precandidato a Presidente • 100% Morados por el Cambio
+            </span>
+          </div>
+
+          <div class="row g-4">
+
+            <!-- Columna 1: Perfil + Especialización -->
+            <div class="col-lg-6">
+              <h5 class="fw-bold text-morado border-bottom border-3 border-morado pb-2 mb-3">PERFIL PROFESIONAL</h5>
+              <p class="small text-muted lh-lg">
+                Ingeniero Geólogo (UNI, 1983) con <strong>40+ años</strong> en exploración minera, gestión de inversiones <strong>(USD 400 MM)</strong> y liderazgo de proyectos en Perú y región andina. 
+                Ex Gerente de Exploraciones en <strong>Buenaventura, Newmont, Yanacocha, Barrick</strong>. Empresario, consultor (PwC, ProInversión), docente y folklorista.
+              </p>
+
+              <h6 class="fw-bold text-morado mt-4">ESPECIALIZACIÓN</h6>
+              <div class="row row-cols-2 g-2 small">
+                <div><span class="text-morado">Exploración y descubrimiento</span></div>
+                <div><span class="text-morado">Gestión de inversiones mineras</span></div>
+                <div><span class="text-morado">Gobierno corporativo</span></div>
+                <div><span class="text-morado">Geología y vulcanología</span></div>
+                <div><span class="text-morado">Gestión social comunitaria</span></div>
+                <div><span class="text-morado">Folklore y cultura peruana</span></div>
+              </div>
+            </div>
+
+            <!-- Columna 2: Experiencia + Aptitudes -->
+            <div class="col-lg-6">
+              <h5 class="fw-bold text-morado border-bottom border-3 border-morado pb-2 mb-3">EXPERIENCIA DESTACADA</h5>
+              <ul class="list-unstyled small lh-lg">
+                <li class="mb-2"><strong>GeoAndina</strong> – Gerente General (Actual)</li>
+                <li class="mb-2"><strong>Aruntani</strong> – Director Estratégico</li>
+                <li class="mb-2"><strong>Buenaventura</strong> – Gerente de Exploraciones</li>
+                <li class="mb-2"><strong>Newmont, Yanacocha, Barrick</strong> – Líder de Proyectos</li>
+                <li class="mb-2"><strong>PwC, ProInversión</strong> – Consultor Institucional</li>
+              </ul>
+
+              <h6 class="fw-bold text-morado mt-4">APTITUDES</h6>
+              <div class="d-flex flex-wrap gap-2 small">
+                <span class="badge bg-light text-morado border border-morado">Liderazgo</span>
+                <span class="badge bg-light text-morado border border-morado">Estrategia</span>
+                <span class="badge bg-light text-morado border border-morado">Análisis Técnico</span>
+                <span class="badge bg-light text-morado border border-morado">Docencia</span>
+                <span class="badge bg-light text-morado border border-morado">Comunicación</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección inferior: Formación + Institucional + Política -->
+          <div class="mt-4 p-4 rounded" style="background: white; border-left: 5px solid var(--morado);">
+            <div class="row text-center text-lg-start small">
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">FORMACIÓN</h6>
+                <p class="mb-0">UNI (Geología), ESAN, UPC, IDE</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">INSTITUCIONAL</h6>
+                <p class="mb-0">Presidente Sociedad Geológica del Perú<br>Profesor UNI • Mentor desde 1985</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">POLÍTICA</h6>
+                <p class="mb-0">Centro Republicano<br>Afiliado PM desde 2020<br><strong>Cero antecedentes</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cultura y Detalles -->
+          <div class="text-center mt-4">
+            <p class="small text-muted fst-italic">
+              Folklorista activo (FOLKUNI, Sicuris 20 de Julio) • Difusión cultural en sindicatos y pueblos jóvenes • 
+              <strong>Sin antecedentes, ni denuncias</strong>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-morado px-4" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Creativo: Rolando Calderón -->
+  <div class="modal fade" id="calderonModal" tabindex="-1" aria-labelledby="calderonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: 18px; overflow: hidden;">
+        
+        <!-- Header con degradado morado -->
+        <div class="modal-header text-white" style="background: linear-gradient(135deg, #4B0082, #6A1B9A); padding: 1.8rem 2rem;">
+          <h4 class="modal-title fw-bold mb-0" id="calderonModalLabel">
+            ROLANDO CALDERÓN LIZÁRRAGA
+          </h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-4 p-lg-5" style="background: #f8f9fa;">
+
+          <!-- Subtítulo -->
+          <div class="text-center mb-4">
+            <span class="badge bg-morado text-white px-4 py-2 fw-bold" style="font-size: 0.9rem; letter-spacing: 1px;">
+              Precandidato a Vicepresidente • 100% Morados por el Cambio
+            </span>
+          </div>
+
+          <div class="row g-4">
+
+            <!-- Columna 1: Perfil + Especialización -->
+            <div class="col-lg-6">
+              <h5 class="fw-bold text-morado border-bottom border-3 border-morado pb-2 mb-3">PERFIL PROFESIONAL</h5>
+              <p class="small text-muted lh-lg">
+                Abogado independiente con <strong>30+ años</strong> en Derecho Civil. Egresado de la <strong>PUCP</strong>. 
+                Trilingüe (ES/FR/EN) con conocimientos de latín. Expresidente de <strong>dos Comisiones de Ética del CAL</strong>. 
+                Colaborador en <strong>La República</strong> y <strong>Caretas</strong> por más de 20 años. 
+                <strong>Sin antecedentes ni casos mediáticos.</strong>
+              </p>
+
+              <h6 class="fw-bold text-morado mt-4">ESPECIALIZACIÓN</h6>
+              <div class="row row-cols-2 g-2 small">
+                <div><span class="text-morado">Derecho civil</span></div>
+                <div><span class="text-morado">Ética profesional</span></div>
+                <div><span class="text-morado">Gestión institucional</span></div>
+                <div><span class="text-morado">Análisis jurídico</span></div>
+                <div><span class="text-morado">Relaciones cívicas</span></div>
+                <div><span class="text-morado">Comunicación pública</span></div>
+              </div>
+            </div>
+
+            <!-- Columna 2: Experiencia + Aptitudes -->
+            <div class="col-lg-6">
+              <h5 class="fw-bold text-morado border-bottom border-3 border-morado pb-2 mb-3">EXPERIENCIA</h5>
+              <ul class="list-unstyled small lh-lg">
+                <li class="mb-2"><strong>Abogado Independiente</strong> – Desde 1992</li>
+                <li class="mb-2"><strong>CAL</strong> – Presidente de Comisiones de Ética</li>
+                <li class="mb-2"><strong>Sociedad Bolivariana</strong> – Miembro activo</li>
+                <li class="mb-2"><strong>Publicaciones</strong> – La República, Caretas (20+ años)</li>
+              </ul>
+
+              <h6 class="fw-bold text-morado mt-4">APTITUDES</h6>
+              <div class="d-flex flex-wrap gap-2 small">
+                <span class="badge bg-light text-morado border border-morado">Ética</span>
+                <span class="badge bg-light text-morado border border-morado">Razonamiento</span>
+                <span class="badge bg-light text-morado border border-morado">Comunicación</span>
+                <span class="badge bg-light text-morado border border-morado">Liderazgo</span>
+                <span class="badge bg-light text-morado border border-morado">Idiomas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección inferior: Formación + Institucional + Política -->
+          <div class="mt-4 p-4 rounded" style="background: white; border-left: 5px solid var(--morado);">
+            <div class="row text-center text-lg-start small">
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">FORMACIÓN</h6>
+                <p class="mb-0">PUCP – Abogado (1992)</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">IDIOMAS</h6>
+                <p class="mb-0">Español (nativo)<br>Francés • Inglés (avanzado)<br>Latín</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">POLÍTICA</h6>
+                <p class="mb-0">Cercano al PM desde “Todos por el Perú”<br>Afiliado desde 2020<br><strong>Cero antecedentes</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detalles personales -->
+          <div class="text-center mt-4">
+            <p class="small text-muted fst-italic">
+              Casado hace 26 años • Hijo militante del Partido Morado • 
+              <strong>Conducta intachable, sin casos mediáticos ni irregularidades</strong>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-morado px-4" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Creativo: Olga Tejada -->
+  <div class="modal fade" id="tejadaModal" tabindex="-1" aria-labelledby="tejadaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: 18px; overflow: hidden;">
+        
+        <!-- Header con degradado morado -->
+        <div class="modal-header text-white" style="background: linear-gradient(135deg, #4B0082, #6A1B9A); padding: 1.8rem 2rem;">
+          <h4 class="modal-title fw-bold mb-0" id="tejadaModalLabel">
+            OLGA TEJADA
+          </h4>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-4 p-lg-5" style="background: #f8f9fa;">
+
+          <!-- Subtítulo -->
+          <div class="text-center mb-4">
+            <span class="badge bg-morado text-white px-4 py-2 fw-bold" style="font-size: 0.9rem; letter-spacing: 1px;">
+              Precandidata a Secretaria General • 100% Morados por el Cambio
+            </span>
+          </div>
+
+          <div class="row g-4">
+
+            <!-- Columna 1: Perfil + Especialización -->
+            <div class="col-lg-6">
+              <h5 class="fw-bold text-morado border-bottom border-3 border-morado pb-2 mb-3">PERFIL PROFESIONAL</h5>
+              <p class="small text-muted lh-lg">
+                Empresaria con <strong>20+ años</strong> en la industria gráfica. 
+                Fundadora y <strong>Gerente General</strong> de una empresa líder en impresión. 
+                Experta en gestión integral: producción, compras, logística, atención al cliente y crecimiento comercial. 
+                Enfoque en <strong>optimización operativa</strong>, <strong>fidelización</strong> y formación de equipos de alto rendimiento.
+              </p>
+
+              <h6 class="fw-bold text-morado mt-4">ESPECIALIZACIÓN</h6>
+              <div class="row row-cols-2 g-2 small">
+                <div><span class="text-morado">Gestión empresarial</span></div>
+                <div><span class="text-morado">Producción gráfica</span></div>
+                <div><span class="text-morado">Logística y compras</span></div>
+                <div><span class="text-morado">Atención al cliente</span></div>
+                <div><span class="text-morado">Crecimiento comercial</span></div>
+                <div><span class="text-morado">Liderazgo de equipos</span></div>
+              </div>
+            </div>
+
+            <!-- Columna 2: Experiencia + Aptitudes -->
+            <div class="col-lg-6">
+              <h5 class="fw-bold text-morado border-bottom border-3 border-morado pb-2 mb-3">EXPERIENCIA DESTACADA</h5>
+              <ul class="list-unstyled small lh-lg">
+                <li class="mb-2"><strong>Fundadora y Gerente General</strong> – Empresa Gráfica (2003–Actual)</li>
+                <li class="mb-2"><strong>Liderazgo en crecimiento</strong> – Expansión comercial y fidelización</li>
+                <li class="mb-2"><strong>Optimización operativa</strong> – Reducción de costos y mejora de procesos</li>
+                <li class="mb-2"><strong>Formación de equipos</strong> – Cultura de resultados y eficiencia</li>
+                <li class="mb-2"><strong>Militante Morada</strong> – Compromiso con renovación y transparencia</li>
+              </ul>
+
+              <h6 class="fw-bold text-morado mt-4">APTITUDES</h6>
+              <div class="d-flex flex-wrap gap-2 small">
+                <span class="badge bg-light text-morado border border-morado">Estrategia</span>
+                <span class="badge bg-light text-morado border border-morado">Liderazgo</span>
+                <span class="badge bg-light text-morado border border-morado">Eficiencia</span>
+                <span class="badge bg-light text-morado border border-morado">Resultados</span>
+                <span class="badge bg-light text-morado border border-morado">Gestión</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección inferior: Formación + Política + Valores -->
+          <div class="mt-4 p-4 rounded" style="background: white; border-left: 5px solid var(--morado);">
+            <div class="row text-center text-lg-start small">
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">FORMACIÓN</h6>
+                <p class="mb-0">Administración de Empresas<br>Especialización en Gestión Gráfica</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">EXPERIENCIA</h6>
+                <p class="mb-0">20+ años en el sector gráfico<br>Emprendedora desde 2003</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <h6 class="fw-bold text-morado">POLÍTICA</h6>
+                <p class="mb-0">Centro republicano<br>Militante PM desde 2020<br><strong>Cero antecedentes</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detalles finales -->
+          <div class="text-center mt-4">
+            <p class="small text-muted fst-italic">
+              Madre de familia • Empresaria comprometida con la eficiencia, la ética y el crecimiento sostenible • 
+              <strong>Renovación con resultados reales</strong>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-morado px-4" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bootstrap + Font Awesome -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+
+  <!-- Google Analytics (reemplaza UA-XXXXX-X) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+</body>
+</html>
